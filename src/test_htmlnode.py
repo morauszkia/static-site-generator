@@ -4,6 +4,12 @@ from htmlnode import HTMLNode
 
 
 class TestHTMLNode(unittest.TestCase):
+    def test_no_prop(self):
+        node = HTMLNode("p", "This is just text.")
+        expected_props = ""
+        actual_props = node.props_to_html()
+        self.assertEqual(actual_props, expected_props)
+
     def test_single_prop(self):
         node1 = HTMLNode("a", "Google", None, { "href": "https://www.google.com"})
         expected_props1 = ' href="https://www.google.com"'
