@@ -4,7 +4,7 @@ from textnode import *
 from textnode_conversions import *
 
 
-class TestTextNode(unittest.TestCase):
+class TestTextNodeConversions(unittest.TestCase):
     def test_text_to_node_simple(self):
         text = "Just plain text with no formatting."
         result = text_to_textnodes(text)
