@@ -13,31 +13,25 @@ def empty_directory(path):
         print("Directory already exists.")
 
 
-def copy_files(src, dst):
-    if not os.path.exists(src):
-        print(f"Source directory {os.path.abspath(src)} does not exist!")
+def copy_static_files(src_dir, dest_dir):
+
+    if not os.path.exists(src_dir):
+        print(f"Source directory {os.path.abspath(src_dir)} does not exist!")
         return
 
-    if not os.path.exists(dst):
-        os.makedirs(dst)
+    if not os.path.exists(dest_dir):
+        os.makedirs(dest_dir)
     
-    for item in os.listdir(src):
-        src_path = os.path.join(src, item)
-        dst_path = os.path.join(dst, item)
+    for item in os.listdir(src_dir):
+        src_path = os.path.join(src_dir, item)
+        dst_path = os.path.join(dest_dir, item)
 
         if os.path.isdir(src_path):
-            copy_files(src_path, dst_path)
+            copy_static_files(src_path, dst_path)
         else:
             print(f"Copying file {src_path} to {dst_path}")
             shutil.copy(src_path, dst_path)
     
-        
 
-def copy_static_files(src_dir="static", dest_dir="public"):
-    empty_directory(dest_dir)
-
-    print(f"Copying static files from {src_dir} to {dest_dir}")
-    copy_files(src_dir, dest_dir)
-    print("Finished copying files.")
 
 
