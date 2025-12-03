@@ -73,7 +73,7 @@ def block_to_htmlnode(block):
             children = [ParentNode("li", text_to_children(line)) for line in content]
             return ParentNode("ol", children)
         case BlockType.QUOTE:
-            content = "\n".join([line.removeprefix("> ") for line in block.split("\n")])
+            content = "<br>".join([line.removeprefix(">") for line in block.split("\n")])
             children = text_to_children(content)
             return ParentNode("blockquote", children)
         case BlockType.PARAGRAPH:
